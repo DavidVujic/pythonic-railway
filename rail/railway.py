@@ -1,30 +1,25 @@
-from functools import reduce
+from functools import reduce, partial
+from . import adapter
 
 
-class Fail:
-    def __init__(self, fn=None, exception=None):
-        self.fn = fn
-        self.exception: Exception = exception
+def _two_tracked(fn, runner, *args, **kwargs):
+    if len(args) and isinstance(args[0], adapter.Fail):
+        return args[0]
+
+    return runner(fn, *args, **kwargs)
 
 
-def run(fn, *args, **kwargs):
-    try:
-        return fn(*args, **kwargs)
-    except Exception as e:
-        return Fail(fn=fn, exception=e)
+def tracks(fn):
+    """Wraps a plain function in a Railway two-tracks function."""
+    return partial(_two_tracked, fn, adapter.try_catch)
 
 
-def wrap(fn):
-    def two_tracked_fn(*args, **kwargs):
-        if len(args) and isinstance(args[0], Fail):
-            return args[0]
-
-        return run(fn, *args, **kwargs)
-
-    return two_tracked_fn
+def boolean_tracks(fn):
+    """Wraps a plain function in a Railway two-tracks function."""
+    return partial(_two_tracked, fn, adapter.true_false)
 
 
 def pipe(*functions):
-    functions = map(wrap, functions)
-
+    """Combines functions from left-to-right.
+    The output from a function is the input for the next one"""
     return reduce(lambda arg, fn: fn(arg), functions, None)
