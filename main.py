@@ -1,4 +1,4 @@
-from rails import railway, result, pipeline
+from rails import railway, result, funcs
 
 
 @railway.tracks
@@ -22,9 +22,9 @@ def fn4(args) -> str:
     return f"{args} Hello World"
 
 
-res = pipeline.pipe(fn1, fn2, fn3, fn4)
+res = funcs.pipe(fn1, fn2, fn3, fn4)
 
 if isinstance(res, result.Fail):
     print(f"Failed at: {res.fn.__name__}. Exception? {res.exception}")
 else:
-    print(f"The result is: {res}")
+    print(f"The result is: {res} and the type is {type(res)}")
