@@ -1,4 +1,4 @@
-from .result import Fail
+from . import result
 
 
 def try_catch(fn, *args, **kwargs):
@@ -6,7 +6,7 @@ def try_catch(fn, *args, **kwargs):
     try:
         return fn(*args, **kwargs)
     except Exception as e:
-        return Fail(fn=fn, exception=e)
+        return result.Fail(fn=fn, exception=e)
 
 
 def true_false(fn, *args, **kwargs):
@@ -14,5 +14,5 @@ def true_false(fn, *args, **kwargs):
     res = fn(*args, **kwargs)
 
     if res is False:
-        return Fail(fn=fn)
+        return result.Fail(fn=fn)
     return res

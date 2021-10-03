@@ -1,9 +1,9 @@
 from functools import partial
-from . import adapter
+from . import adapter, result
 
 
 def _two_tracked(fn, runner, *args, **kwargs):
-    if len(args) and isinstance(args[0], adapter.Fail):
+    if len(args) and isinstance(args[0], result.Fail):
         return args[0]
 
     return runner(fn, *args, **kwargs)
