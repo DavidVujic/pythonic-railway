@@ -1,4 +1,4 @@
-from rail import railway, result
+from rail import railway, result, pipeline
 
 
 @railway.tracks
@@ -22,7 +22,7 @@ def fn4(args) -> str:
     return f"{args} Hello World"
 
 
-res = railway.pipe(fn1, fn2, fn3, fn4)
+res = pipeline.pipe(fn1, fn2, fn3, fn4)
 
 if isinstance(res, result.Fail):
     print(f"Failed at: {res.fn.__name__}. Exception? {res.exception}")

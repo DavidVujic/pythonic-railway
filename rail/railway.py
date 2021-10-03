@@ -1,4 +1,4 @@
-from functools import reduce, partial
+from functools import partial
 from . import adapter
 
 
@@ -17,9 +17,3 @@ def tracks(fn):
 def boolean_tracks(fn):
     """Wraps a plain function in a Railway two-tracks function."""
     return partial(_two_tracked, fn, adapter.true_false)
-
-
-def pipe(*functions):
-    """Combines functions from left-to-right.
-    The output from a function is the input for the next one"""
-    return reduce(lambda arg, fn: fn(arg), functions, None)
