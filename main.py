@@ -1,4 +1,4 @@
-from rail import railway, result, pipeline
+from rails import railway, result, pipeline
 
 
 @railway.tracks
