@@ -10,10 +10,10 @@ def _two_tracked(fn, runner, *args, **kwargs):
 
 
 def tracks(fn):
-    """Wraps a plain function in a Railway two-tracks function."""
+    "Wraps a plain function in a Railway two-tracks function."
     return partial(_two_tracked, fn, adapter.try_catch)
 
 
-def boolean_tracks(fn):
-    """Wraps a plain function in a Railway two-tracks function."""
+def true_false_tracks(fn):
+    "Wraps a plain function in a Railway two-tracks function."
     return partial(_two_tracked, fn, adapter.true_false)

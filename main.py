@@ -12,7 +12,7 @@ def fn2(arg) -> tuple:
     return "Hello", arg
 
 
-@railway.boolean_tracks
+@railway.true_false_tracks
 def fn3(arg) -> bool:
     return True
 
