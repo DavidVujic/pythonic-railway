@@ -5,7 +5,7 @@ version of Railway Oriented Programming in Python.
 
 What I'm trying to achieve with the example code in this repo,
 is to use the functional concepts of Railway Oriented Programming,
-but still keep a Pythonic mindset.
+but to keep a Pythonic mindset and not go all-in functional.
 
 ## What's in this repo?
 Turn a single track function, into a two-track Railway by using decorators.
