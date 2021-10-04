@@ -62,7 +62,7 @@ res = funcs.pipe("path/to/file.csv", parse, get_headers, has_valid_headers)
 Or, without the pipe function:
 
 ``` python
-data = parse("parh/to/file.csv")
+data = parse("path/to/file.csv")
 headers = get_headers(data)
 is_valid = has_valid_headers(headers)
 ```
