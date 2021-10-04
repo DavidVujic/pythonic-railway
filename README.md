@@ -31,9 +31,9 @@ an object of `Fail` type will be returned.
 
 If all goes well, the data will be returned as without the decorator.
 
-Side note: In a proper Railway Oriented Programming implementation,
+_Side note: In a proper Railway Oriented Programming implementation,
 a `Success` object should be returned. But I think that
-just returning the data has a nice keep it simple approach.
+just returning the data has a nice keep it simple approach._
 
 There's also a `true-false` adapter for boolean functions. This one could be used to
 take the failed railway track, bypassing the rest of the flow, when the return value from
