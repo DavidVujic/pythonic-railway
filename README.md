@@ -41,6 +41,14 @@ a `False` result should exit the sequence. The wrapper creates a two-track funct
 return a `Fail` object if the result is `False`. The following functions in the sequence will be
 bypassed.
 
+``` python
+@railway.true_false_tracks
+def has_valid_headers(headers):
+    true_or_false = map(lambda header: True if header else False, headers)
+
+    return False not in set(true_or_false)
+```
+
 ## Some syntactic sugar
 In the `funcs` module contains functionality to implement a functions pipeline.
 This one is inspired by threading macros in Clojure.

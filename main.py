@@ -18,6 +18,7 @@ def get_headers(data):
 @railway.true_false_tracks
 def has_valid_headers(headers):
     true_or_false = map(lambda header: True if header else False, headers)
+
     return False not in set(true_or_false)
 
 
