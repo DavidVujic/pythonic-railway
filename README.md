@@ -57,4 +57,4 @@ Otherwise it will be the output from the last function in the sequence.
 Don't miss the NDC London talk
 [Railway oriented programming: Error handling in functional languages by Scott Wlaschin](https://vimeo.com/113707214)
 
-Do you want to go all-in functional Python? Have a look at (returns)[https://returns.readthedocs.io/en/latest/index.html]
+Do you want to go all-in functional Python? Have a look at [returns](https://returns.readthedocs.io/en/latest/index.html)
