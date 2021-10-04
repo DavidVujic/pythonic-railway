@@ -52,3 +52,9 @@ res = funcs.pipe(arg, func1, func2, func3)
 If something has gone wrong somewhere in the sequence, `res` will be a `Fail` object.
 Otherwise it will be the output from the last function in the sequence.
 
+
+## References
+Don't miss the NDC London talk
+[Railway oriented programming: Error handling in functional languages by Scott Wlaschin](https://vimeo.com/113707214)
+
+Do you want to go all-in functional Python? Have a look at (returns)[https://returns.readthedocs.io/en/latest/index.html]
