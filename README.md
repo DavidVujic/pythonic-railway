@@ -13,21 +13,19 @@ Turn a single track function, into a two-track Railway by using decorators.
 before:
 
 ``` python
-def parse(path_to_csv_file):
-    with open(path_to_csv_file, mode="r") as f:
-        return list(csv.DictReader(f))
+def get_headers(data):
+    return data[0].keys()
 ```
 
 after:
 
 ``` python
 @railway.tracks
-def parse(path_to_csv_file):
-    with open(path_to_csv_file, mode="r") as f:
-        return list(csv.DictReader(f))
+def get_headers(data):
+    return data[0].keys()
 ```
 
-The `tracks` decorator will turn the `parse` function into a two-tracked railway,
+The `tracks` decorator will turn the `get_headers` function into a two-tracked railway,
 by wrapping the function call using an adapter. If the function call causes an Exception,
 an object of `Fail` type will be returned.
 
