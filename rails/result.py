@@ -4,5 +4,9 @@ class Fail:
         self.exception: Exception = exception
 
 
-def has_failed(res) -> bool:
+def failed(res) -> bool:
     return isinstance(res, Fail)
+
+
+def succeeded(res) -> bool:
+    return not failed(res)

@@ -8,7 +8,7 @@ default_path = "./data/example.csv"
 def main(path):
     res = app.run(path)
 
-    if result.has_failed(res):
+    if result.failed(res):
         return (
             f"Failed at: {res.fn.__name__}. "
             f"{repr(res.exception) if res.exception else ''}"
