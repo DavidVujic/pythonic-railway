@@ -1,25 +1,24 @@
 from rails import railway, result, funcs
+import csv
+
+CSV_PATH = "./data/example.csv"
 
 
 @railway.tracks
-def fn1(arg) -> float:
-    return 4.2
+def parse(path_to_csv_file):
+    with open(path_to_csv_file, mode="r") as f:
+        return list(csv.DictReader(f))
 
 
 @railway.tracks
-def fn2(arg) -> tuple:
-    # raise Exception("KABOOM")
-    return "Hello", arg
+def get_headers(data):
+    return data[0].keys()
 
 
 @railway.true_false_tracks
-def fn3(arg) -> bool:
-    return True
-
-
-@railway.tracks
-def fn4(args) -> str:
-    return f"{args} Hello World"
+def has_valid_headers(headers):
+    true_or_false = map(lambda header: True if header else False, headers)
+    return False not in set(true_or_false)
 
 
 def print_result(res):
@@ -30,19 +29,18 @@ def print_result(res):
 
 
 def with_piped_functions():
-    res = funcs.pipe(fn1, fn2, fn3, fn4)
+    res = funcs.pipe(CSV_PATH, parse, get_headers, has_valid_headers)
 
     print_result(res)
 
 
 def with_functions_one_by_one():
-    a = fn1(None)
-    b = fn2(a)
-    c = fn3(b)
-    d = fn4(c)
+    data = parse(CSV_PATH)
+    headers = get_headers(data)
+    is_valid = has_valid_headers(headers)
 
-    print_result(d)
+    print_result(is_valid)
 
 
-# with_piped_functions()
-# with_functions_one_by_one()
+with_piped_functions()
+with_functions_one_by_one()
