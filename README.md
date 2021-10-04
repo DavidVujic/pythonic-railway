@@ -10,14 +10,14 @@ At the same time I want to keep a Pythonic mindset, and not go all-in functional
 ## What's in this repo?
 Turn a single track function, into a two-track Railway by using decorators.
 
-before:
+before (without error handling):
 
 ``` python
 def get_headers(data):
     return data[0].keys()
 ```
 
-after:
+after (with error handling):
 
 ``` python
 @railway.tracks
@@ -26,7 +26,7 @@ def get_headers(data):
 ```
 
 The `tracks` decorator will turn the `get_headers` function into a two-tracked railway,
-by wrapping the function call. If the code in the function causes an Exception,
+by wrapping the function call. If the code in the function causes an 💥 Exception 💥 (such as an IndexError or TypeError),
 an object of `Fail` type will be returned. The following functions will be bypassed when a `Fail`
 object is passed in as an argument.
 
