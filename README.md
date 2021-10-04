@@ -7,17 +7,30 @@ What I'm trying to achieve with the example code in this repo,
 is to use the functional concepts of Railway Oriented Programming.
 At the same time I want to keep a Pythonic mindset, and not go all-in functional.
 
+## Why Railways?
+As I understand Railway Oriented Programming, it is about adding error handling and still keeping a "happy path" style in the code.
+This is done by wrapping or decorating functions.
+
+The functions are wrapped (or decorated, as in the examples in this repo) to catch failures. The output of a failed function call will
+be the input to the next one. The next function will choose track based on the input: the success track or the fail track.
+
+By using a two-tracked approach in functions, the error handling will be separated from the program.
+
+Functions will be less cluttered with `try except` error handling and also `if else` flow control clauses. In many cases,
+this will mean that the amount of code within functions will be a lot less. Less is more.
+
+
 ## What's in this repo?
 Turn a single track function, into a two-track Railway by using decorators.
 
-before (without error handling):
+before:
 
 ``` python
 def get_headers(data):
     return data[0].keys()
 ```
 
-after (with error handling):
+after:
 
 ``` python
 @railway.tracks
@@ -70,16 +83,9 @@ is_valid = has_valid_headers(headers)
 If something has gone wrong somewhere in the sequence, `res` will be a `Fail` object.
 Otherwise it will be the output from the last function in the sequence.
 
-## But why using Railways?
-By using a two-tracked approach in functions,
-the error handling will be separated from the program.
-
-Functions will be less cluttered with `try except` error handling and `if else` flow control clauses. In many cases,
-this will mean that the amount of code within functions will be a lot less. Less is more.
-
-
 ## References
 Don't miss the NDC London talk
 [Railway oriented programming: Error handling in functional languages by Scott Wlaschin](https://vimeo.com/113707214)
 
 Do you want to go all-in functional Python? Have a look at [returns](https://returns.readthedocs.io/en/latest/index.html)
+and [toolz](https://github.com/pytoolz/toolz)
