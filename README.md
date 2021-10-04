@@ -56,11 +56,26 @@ This one is inspired by threading macros in Clojure.
 The first argument to `pipe` is the input value to the first function in the sequence.
 The output from the first function is the input to the next one.
 ``` python
-res = funcs.pipe(arg, func1, func2, func3)
+res = funcs.pipe("path/to/file.csv", parse, get_headers, has_valid_headers)
+```
+
+Or, without the pipe function:
+
+``` python
+data = parse("parh/to/file.csv")
+headers = get_headers(data)
+is_valid = has_valid_headers(headers)
 ```
 
 If something has gone wrong somewhere in the sequence, `res` will be a `Fail` object.
 Otherwise it will be the output from the last function in the sequence.
+
+## But why using Railways?
+By using a two-tracked approach in functions,
+the error handling will be separated from the program flow.
+
+Functions will be less cluttered with `try except` or `if else` clauses. In many cases,
+this will mean that the amount of code within functions will be a lot less. Less is more.
 
 
 ## References
