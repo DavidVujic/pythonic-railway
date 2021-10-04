@@ -72,9 +72,9 @@ Otherwise it will be the output from the last function in the sequence.
 
 ## But why using Railways?
 By using a two-tracked approach in functions,
-the error handling will be separated from the program flow.
+the error handling will be separated from the program.
 
-Functions will be less cluttered with `try except` or `if else` clauses. In many cases,
+Functions will be less cluttered with `try except` error handling and `if else` flow control clauses. In many cases,
 this will mean that the amount of code within functions will be a lot less. Less is more.
 
 
