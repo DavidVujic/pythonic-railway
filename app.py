@@ -1,5 +1,7 @@
-from rails import railway, funcs
 import csv
+
+import railway
+from helpers import piping
 
 
 @railway.tracks
@@ -13,7 +15,7 @@ def _get_headers(data):
     return data[0].keys()
 
 
-@railway.true_false_tracks
+@railway.tracks_boolean
 def _has_valid_headers(headers):
     true_or_false = map(lambda header: True if header else False, headers)
 
@@ -21,7 +23,7 @@ def _has_valid_headers(headers):
 
 
 def run(path):
-    return funcs.pipe(path, _parse, _get_headers, _has_valid_headers)
+    return piping.pipe(path, _parse, _get_headers, _has_valid_headers)
 
 
 def run_each_function_one_by_one(path):

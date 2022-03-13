@@ -1,7 +1,10 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Fail:
-    def __init__(self, fn=None, exception=None):
-        self.fn = fn
-        self.exception: Exception = exception
+    exception: Exception | None
+    name: str
 
 
 def failed(res) -> bool:

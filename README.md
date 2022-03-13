@@ -55,7 +55,7 @@ return a `Fail` object if the result is `False`. The following functions in the 
 bypassed.
 
 ``` python
-@railway.true_false_tracks
+@railway.tracks_boolean
 def has_valid_headers(headers):
     true_or_false = map(lambda header: True if header else False, headers)
 
@@ -69,7 +69,7 @@ This one is inspired by threading macros in Clojure.
 The first argument to `pipe` is the input value to the first function in the sequence.
 The output from the first function is the input to the next one.
 ``` python
-res = funcs.pipe("path/to/file.csv", parse, get_headers, has_valid_headers)
+res = pipe("path/to/file.csv", parse, get_headers, has_valid_headers)
 ```
 
 Or, without the pipe function:

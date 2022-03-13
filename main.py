@@ -1,6 +1,7 @@
 import sys
+
 import app
-from rails import result
+import railway
 
 default_path = "./data/example.csv"
 
@@ -8,13 +9,10 @@ default_path = "./data/example.csv"
 def main(path):
     res = app.run(path)
 
-    if result.failed(res):
-        return (
-            f"Failed at: {res.fn.__name__}. "
-            f"{repr(res.exception) if res.exception else ''}"
-        )
+    if railway.failed(res):
+        return f"Function={res.name} Error={repr(res.exception) if res.exception else 'empty'}"
     else:
-        return f"The result is: {res} and the type is {type(res)}"
+        return f"The result is: {res}"
 
 
 if __name__ == "__main__":
