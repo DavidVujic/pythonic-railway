@@ -3,8 +3,8 @@ from dataclasses import dataclass
 
 @dataclass
 class Fail:
-    exception: Exception | None
-    name: str
+    exception: Exception | None = None
+    name: str | None = None
 
 
 def failed(res) -> bool:

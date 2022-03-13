@@ -11,4 +11,4 @@ def try_catch(fn, *args, **kwargs):
 def true_false(fn, *args, **kwargs):
     res = fn(*args, **kwargs)
 
-    return Fail(exception=None, name=fn.__name__) if res is False else res
+    return Fail(name=fn.__name__) if res is False else res
