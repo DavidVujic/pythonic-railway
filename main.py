@@ -10,7 +10,11 @@ def main(path):
     res = app.run(path)
 
     if railway.failed(res):
-        return f"Function={res.name} Error={repr(res.exception) if res.exception else 'empty'}"
+        print("Function name", res.name)
+        print("Exception", repr(res.exception) if res.exception else None)
+        print("args", res.args)
+        print("kwargs", res.kwargs)
+        return "FAIL"
     else:
         return f"The result is: {res}"
 
